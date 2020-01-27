@@ -6,7 +6,7 @@
 /*   By: lbisscho <lbisscho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/21 12:09:34 by lbisscho       #+#    #+#                */
-/*   Updated: 2020/01/23 16:58:31 by lbisscho      ########   odam.nl         */
+/*   Updated: 2020/01/27 12:47:10 by lbisscho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,28 +25,37 @@ void	x_second(t_fl *fl, char *hexa_str, int count, int minus_printed)
 	free(hexa_str);
 }
 
-void	x_found(unsigned long nb, char x, t_fl *fl)
+int		x_loop(unsigned long nb, char **hexa_str, char x)
 {
-	int		minus_printed;
-	int		temp;
-	char	*hexa_str;
-	int		count;
+	int temp;
+	int count;
 
-	count = 0;
 	temp = nb;
-	minus_printed = 0;
-	hexa_str = ft_calloc(14, 8);
+	count = 0;
 	while (nb > 0)
 	{
 		temp = nb % 16;
 		nb = nb / 16;
 		if (temp < 10)
-			hexa_str[count] = temp + 48;
+			(*hexa_str)[count] = temp + 48;
 		else if (temp >= 10 && x == 'X')
-			hexa_str[count] = temp + 55;
+			(*hexa_str)[count] = temp + 55;
 		else if (temp >= 10 && x == 'x')
-			hexa_str[count] = temp + 87;
+			(*hexa_str)[count] = temp + 87;
 		count++;
 	}
+	return (count);
+}
+
+void	x_found(unsigned long nb, char x, t_fl *fl)
+{
+	int		minus_printed;
+	char	*hexa_str;
+	int		count;
+
+	count = 0;
+	minus_printed = 0;
+	hexa_str = ft_calloc(14, 8);
+	count = x_loop(nb, &hexa_str, x);
 	x_second(&(*fl), hexa_str, count, minus_printed);
 }

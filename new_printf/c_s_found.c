@@ -6,7 +6,7 @@
 /*   By: lbisscho <lbisscho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/21 15:52:46 by lbisscho       #+#    #+#                */
-/*   Updated: 2020/01/23 17:06:36 by lbisscho      ########   odam.nl         */
+/*   Updated: 2020/01/27 13:32:31 by lbisscho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	implement_width_s(t_fl *fl)
 	char	*string_arg;
 	int		i;
 
+	string_arg = NULL;
 	checking_and_setting_s(&(*fl), &i, &string_arg);
 	while (fl->wdth > i)
 	{
@@ -48,6 +49,8 @@ void	implement_width_s(t_fl *fl)
 		fl->wdth--;
 	}
 	fl->wdth = 0;
+	if (string_arg)
+		free(string_arg);
 }
 
 void	c_found(t_fl *fl)
@@ -67,6 +70,7 @@ void	s_found(t_fl *fl)
 {
 	char *newstr;
 
+	newstr = NULL;
 	if (fl->minus == 0 && fl->wdth != 0)
 		implement_width_s(&(*fl));
 	if (fl->arg == NULL)
@@ -86,6 +90,8 @@ void	s_found(t_fl *fl)
 	}
 	if (fl->minus > 0)
 		implement_width_s(&(*fl));
+	if (newstr)
+		free(newstr);
 }
 
 void	c_s_found(t_fl *fl, char cha)

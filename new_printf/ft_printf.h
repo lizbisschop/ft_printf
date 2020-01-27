@@ -6,7 +6,7 @@
 /*   By: lbisscho <lbisscho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/06 11:08:22 by lbisscho       #+#    #+#                */
-/*   Updated: 2020/01/23 16:58:51 by lbisscho      ########   odam.nl         */
+/*   Updated: 2020/01/27 13:28:03 by lbisscho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ typedef	struct	s_fl
 	int			c_d_i;
 	int			c_x;
 	int			c;
-	int 		c_p;
+	int			c_p;
 	int			fl_exst;
 	int			save_width;
 	int			save_pre;
 	int			wdth_cnt;
-	int 		pre_exist;
+	int			pre_exist;
 }				t_fl;
 
 int		ft_printf(const char *format, ...);
@@ -85,5 +85,6 @@ int		power(int base, int digit);
 void	p_second(t_fl *fl, char *pointer_str);
 void	checking_and_setting_p(t_fl *fl, char *str_arg, int *i);
 void	x_second(t_fl *fl, char *hexa_str, int count, int minus_printed);
+int		x_loop(unsigned long nb, char **hexa_str, char x);
 
 #endif
