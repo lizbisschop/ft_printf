@@ -6,7 +6,7 @@
 /*   By: lbisscho <lbisscho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/06 11:08:22 by lbisscho       #+#    #+#                */
-/*   Updated: 2020/01/29 18:14:12 by lbisscho      ########   odam.nl         */
+/*   Updated: 2020/01/30 16:51:04 by lbisscho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void			flags_detected(t_fl *fl, const char *format);
 void			implement_width_d_i(t_fl *fl, char *str_arg, int minus_printed);
 int				checking_and_setting_s(t_fl *fl, int *i, char **string_arg);
 int				d_i_found(t_fl *fl);
+void			minus_number_width(int *minus, char *str_arg, t_fl *fl, int *i);
 int				x_found(unsigned long nb, char x, t_fl *fl);
 char			*ft_str_reverse(char *string);
 int				p_found(t_fl *fl);

@@ -6,7 +6,7 @@
 /*   By: lbisscho <lbisscho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/21 12:09:34 by lbisscho       #+#    #+#                */
-/*   Updated: 2020/01/29 13:00:59 by lbisscho      ########   odam.nl         */
+/*   Updated: 2020/01/30 17:26:20 by lbisscho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	x_second(t_fl *fl, char *hexa_str, int count, int minus_print)
 	hexa_str[count] = '\0';
 	if (((unsigned long)fl->arg == 0))
 		hexa_str[0] = '0';
+	if (fl->pre == 0 && fl->wdth != 0)
+		fl->padd = ' ';
 	hexa_str = ft_str_reverse(hexa_str);
 	implement_width_d_i(&(*fl), hexa_str, minus_print);
 	if (fl->pre != 0 || (fl->pre == 0 && (unsigned long)fl->arg != 0))

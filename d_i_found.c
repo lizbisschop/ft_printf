@@ -6,22 +6,27 @@
 /*   By: lbisscho <lbisscho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/20 13:22:19 by lbisscho       #+#    #+#                */
-/*   Updated: 2020/01/29 15:58:05 by lbisscho      ########   odam.nl         */
+/*   Updated: 2020/01/31 12:06:03 by lbisscho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	implement_precision_d_i(t_fl *fl, int i, char *str_arg)
+void	minus_number_width(int *minus, char *str_arg, t_fl *fl, int *i)
 {
-	if (str_arg[0] == '-' && fl->save_pre < fl->save_width)
-		ft_putchar_pf('-', &(*fl));
-	while (fl->pre > i)
+	*minus = ft_strlen_pf(str_arg) - 1;
+	if (fl->pre < fl->wdth && fl->pre > ft_strlen_pf(str_arg)
+		&& fl->minus == 0)
 	{
-		ft_putchar_pf('0', &(*fl));
-		fl->pre--;
-		fl->wdth_cnt++;
+		*i = ft_strlen(str_arg);
+		fl->wdth--;
 	}
+	else if (fl->save_pre > ft_strlen_pf(str_arg))
+		*i = ft_strlen(str_arg) + 2;
+	else if (ft_strlen_pf(str_arg) == 2 && fl->save_pre == 2)
+		*i = ft_strlen(str_arg) + 1;
+	else
+		*i = ft_strlen_pf(str_arg);
 }
 
 void	check_and_set(t_fl *fl, int *i, int *minus, char *str_arg)
@@ -31,13 +36,7 @@ void	check_and_set(t_fl *fl, int *i, int *minus, char *str_arg)
 	if ((fl->zero > 0 && fl->pre > 0) || fl->zero == 0)
 		fl->padd = ' ';
 	if (fl->pre > 0 && str_arg[0] == '-')
-	{
-		*minus = ft_strlen_pf(str_arg) - 1;
-		if (fl->save_pre > ft_strlen_pf(str_arg))
-			*i = ft_strlen(str_arg) + 2;
-		else
-			*i = ft_strlen_pf(str_arg);
-	}
+		minus_number_width(&(*minus), &(*str_arg), &(*fl), &(*i));
 	else if (fl->pre == 0 && (int)fl->arg == 0)
 		*i = 0;
 	else
@@ -92,12 +91,15 @@ int		d_i_found(t_fl *fl)
 		return (-1);
 	if (str_arg[0] == '-' && fl->fl_exst > 0)
 	{
-		if (fl->save_pre > fl->save_width || fl->pre == -1)
+		if (fl->save_pre >= fl->save_width || (fl->pre == -1 && fl->wdth == 0)
+			|| (fl->pre == -1 && (fl->zero != 0 || fl->minus != 0)))
 		{
 			ft_putchar_pf('-', &(*fl));
 			minus_printed = 1;
 		}
 	}
+	if (fl->pre == 0 && fl->wdth != 0)
+		fl->padd = ' ';
 	implement_width_d_i(&(*fl), str_arg, minus_printed);
 	if (fl->pre != 0 || (fl->pre == 0 && (int)fl->arg != 0))
 		ft_putnbr_pf((int)fl->arg, &(*fl));

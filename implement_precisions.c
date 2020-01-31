@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   second_percent.c                                   :+:    :+:            */
+/*   implement_precisions.c                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: lbisscho <lbisscho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/01/21 16:38:36 by lbisscho       #+#    #+#                */
-/*   Updated: 2020/01/30 11:51:50 by lbisscho      ########   odam.nl         */
+/*   Created: 2020/01/30 16:53:18 by lbisscho       #+#    #+#                */
+/*   Updated: 2020/01/30 16:53:39 by lbisscho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	second_percent(t_fl *fl)
+void	implement_precision_d_i(t_fl *fl, int i, char *str_arg)
 {
-	char	*str_arg;
-	int		minus_printed;
-
-	if (fl->pre != -1)
+	if (str_arg[0] == '-' && fl->save_pre < fl->save_width)
+		ft_putchar_pf('-', &(*fl));
+	while (fl->pre > i)
 	{
-		fl->pre = -1;
-		fl->save_pre = -1;
+		ft_putchar_pf('0', &(*fl));
+		fl->pre--;
+		fl->wdth_cnt++;
 	}
-	minus_printed = 0;
-	str_arg = "%";
-	implement_width_d_i(&(*fl), str_arg, minus_printed);
-	ft_putchar_pf('%', &(*fl));
-	implement_width_d_i(&(*fl), str_arg, minus_printed);
 }

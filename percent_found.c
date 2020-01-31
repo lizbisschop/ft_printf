@@ -6,7 +6,7 @@
 /*   By: lbisscho <lbisscho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/20 13:52:10 by lbisscho       #+#    #+#                */
-/*   Updated: 2020/01/29 14:25:37 by lbisscho      ########   odam.nl         */
+/*   Updated: 2020/01/30 17:50:14 by lbisscho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		check_conversion(t_fl *fl, const char *format)
 	}
 	else if (format[fl->count] == 'x' || format[fl->count] == 'X')
 	{
-		if (x_found((unsigned long)fl->arg, format[fl->count], &(*fl)) == -1)
+		if (x_found((unsigned int)fl->arg, format[fl->count], &(*fl)) == -1)
 			return (-1);
 		else
 			return (1);
