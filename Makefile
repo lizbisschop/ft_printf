@@ -6,7 +6,7 @@
 #    By: lbisscho <lbisscho@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/01/08 13:47:21 by lbisscho       #+#    #+#                 #
-#    Updated: 2020/01/30 16:54:45 by lbisscho      ########   odam.nl          #
+#    Updated: 2020/02/04 15:29:55 by lbisscho      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,12 +17,12 @@ LIBFTFILES = ./libft
 SRC = ft_printf.c libft_put.c d_i_found.c percent_found.c flags_detected.c \
 	x_found.c p_found.c c_s_found.c second_percent.c u_found.c \
 	implement_width_c_s.c ft_itoa_pf.c set_flags_zero.c \
-	implement_precisions.c
+	implement_precisions.c ft_printf_loop.c
 
 OBJ = ft_printf.o libft_put.o d_i_found.o percent_found.o flags_detected.o \
 	x_found.o p_found.o c_s_found.o second_percent.o u_found.o \
 	implement_width_c_s.o ft_itoa_pf.o set_flags_zero.o \
-	implement_precisions.o
+	implement_precisions.o ft_printf_loop.o
 
 OBJLIBFT = ./libft/ft_bzero.o ./libft/ft_isascii.o ./libft/ft_memccpy.o \
  	./libft/ft_memcpy.o ./libft/ft_strchr.o ./libft/ft_strlen.o \

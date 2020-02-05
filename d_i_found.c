@@ -6,7 +6,7 @@
 /*   By: lbisscho <lbisscho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/20 13:22:19 by lbisscho       #+#    #+#                */
-/*   Updated: 2020/01/31 12:06:03 by lbisscho      ########   odam.nl         */
+/*   Updated: 2020/01/31 17:15:04 by lbisscho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 void	minus_number_width(int *minus, char *str_arg, t_fl *fl, int *i)
 {
 	*minus = ft_strlen_pf(str_arg) - 1;
-	if (fl->pre < fl->wdth && fl->pre > ft_strlen_pf(str_arg)
-		&& fl->minus == 0)
+	if (fl->save_pre < fl->save_width && fl->pre >
+		ft_strlen_pf(str_arg) + 1 && fl->save_width > ft_strlen_pf(str_arg) + 1)
 	{
 		*i = ft_strlen(str_arg);
 		fl->wdth--;
 	}
 	else if (fl->save_pre > ft_strlen_pf(str_arg))
 		*i = ft_strlen(str_arg) + 2;
-	else if (ft_strlen_pf(str_arg) == 2 && fl->save_pre == 2)
+	else if (ft_strlen_pf(str_arg) == fl->save_pre)
 		*i = ft_strlen(str_arg) + 1;
 	else
 		*i = ft_strlen_pf(str_arg);

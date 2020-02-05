@@ -6,7 +6,7 @@
 /*   By: lbisscho <lbisscho@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/01/21 15:52:46 by lbisscho       #+#    #+#                */
-/*   Updated: 2020/01/29 14:20:41 by lbisscho      ########   odam.nl         */
+/*   Updated: 2020/02/03 13:56:55 by lbisscho      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ int		checking_and_setting_s(t_fl *fl, int *i, char **string_arg)
 
 void	c_found(t_fl *fl)
 {
-	if (fl->pre == 0)
-		return ;
 	fl->c = 1;
 	if (fl->minus == 0 && fl->wdth != 0)
 		implement_width_c(&(*fl));
@@ -99,7 +97,11 @@ int		s_found(t_fl *fl)
 int		c_s_found(t_fl *fl, char cha)
 {
 	if (cha == 'c')
+	{
+		if (fl->pre != -1)
+			fl->pre = -1;
 		c_found(&(*fl));
+	}
 	if (cha == 's')
 	{
 		if (s_found(&(*fl)) == -1)
