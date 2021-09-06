@@ -1,6 +1,6 @@
 # ft_printf
 
-The reacreation of the printf function.
+A recreation of the printf function.
 
 Supported format specifiers:
 
