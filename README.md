@@ -15,9 +15,9 @@ Supported format specifiers:
 * %%
 
 Supported flags:
-* --
-* 0
-* .
+* '-'
+* '0'
+* '.'
 
 # Usage
 run "make"
