@@ -20,5 +20,4 @@ Supported flags:
 * '.'
 
 # Usage
-run "make"
-then compile your main with ft_printf.a
+run "make" to compile
