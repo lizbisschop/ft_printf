@@ -15,7 +15,7 @@ Supported format specifiers:
 * %%
 
 Supported flags:
-* -
+* --
 * 0
 * .
 
